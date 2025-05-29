@@ -11,7 +11,7 @@ type Data struct {
 
 type CompareData struct {
 	Previous Data `json:"previous"`
-	New Data `json:"new"`
+	Current Data `json:"current"`
 }
 
 
