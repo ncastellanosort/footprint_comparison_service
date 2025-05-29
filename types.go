@@ -14,4 +14,15 @@ type CompareData struct {
 	Current Data `json:"current"`
 }
 
+type AreaComparison struct {
+    Status string  `json:"status"`
+    Diff   float32 `json:"diff"`
+}
+
+type CompareResponse struct {
+    Previous   Data                 `json:"previous"`
+    Current    Data                 `json:"current"`
+    Comparison map[string]AreaComparison `json:"comparison"`
+}
+
 
