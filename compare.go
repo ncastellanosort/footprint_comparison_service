@@ -32,7 +32,7 @@ func CompareHandler(w http.ResponseWriter, r *http.Request) {
 	// cors
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
-	w.Header().Add("Content-type", "applicattion/json")
+	w.Header().Set("Content-type", "applicattion/json")
 	
 	prev := r.URL.Query().Get("prev")
 	curr := r.URL.Query().Get("curr")
@@ -41,7 +41,8 @@ func CompareHandler(w http.ResponseWriter, r *http.Request) {
 	currId, err2 := strconv.Atoi(curr)
 
 	if err1 != nil || err2 != nil {
-		panic(err1)
+		http.Error(w, "invalid query params", http.StatusBadRequest)
+		return
 	}
 
 	resultPrev := FindResults(prevId)
