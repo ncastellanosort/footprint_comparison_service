@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/joho/godotenv"
 )
@@ -14,10 +15,12 @@ func main() {
 		log.Fatal("err loading env")
   	}
 	InitDB()
+
+	port := os.Getenv("PORT")
 	http.HandleFunc("/compare_service", func (w http.ResponseWriter, r *http.Request) {
 		CompareHandler(w, r)
 	})	
-	fmt.Printf("running on 8080")
-	http.ListenAndServe(":8080", nil)
+	fmt.Printf("running on %s", port)
+	http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
 }
 
