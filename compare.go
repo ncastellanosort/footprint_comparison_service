@@ -22,10 +22,12 @@ func comparison(a, b float32) (string, float32) {
 	p := percent(a, b)
 
 	if c < 0 {
-		return "empeoro", p
+		return "Empeoro", p
+	} else if c == 0 {
+		return "No ha cambiado", p
 	}
 
-	return "mejoro", p
+	return "Mejoro", p
 }
 
 func CompareHandler(w http.ResponseWriter, r *http.Request) {
