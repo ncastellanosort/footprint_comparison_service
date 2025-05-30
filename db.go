@@ -24,20 +24,7 @@ func Connect() {
 }
 
 func InitDB () {
-
 	Connect()
-
-	/*
-	if err := DB.AutoMigrate(
-		&types.Transport{},
-		&types.Energy{},
-		&types.Waste{},
-		&types.Food{},
-	); err != nil {
-		log.Fatalf("migrate err %v", err)
-	}
-	*/
-
 }
 
 func FindResults(id int) Carbon_results {
